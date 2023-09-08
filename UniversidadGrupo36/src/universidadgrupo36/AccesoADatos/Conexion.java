@@ -19,7 +19,7 @@ public class Conexion {
     
     private Conexion (){}
     
-    private static Connection getConnection(){
+    public static Connection getConexion(){
     
         if (connection == null) {
             try {
@@ -36,6 +36,5 @@ public class Conexion {
         return connection;
     
     }
-    
-    
+
 }
