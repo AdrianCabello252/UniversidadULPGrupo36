@@ -3,6 +3,8 @@ package universidadgrupo36.AccesoADatos;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -96,6 +98,51 @@ public class MateriaData {
     
     
     
+   public List<Materia> ListarMaterias() {
+
+    List<Materia> listaMaterias = new ArrayList<>();
     
+    try {
+        String sql = "SELECT * FROM materia";
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+        Materia materia = new Materia();
+        materia.setNombre(rs.getString("nombre"));
+        materia.setAnio(rs.getInt ("anio"));
+        materia.setEstado(true); 
+        
+        listaMaterias.add(materia);
+        }
+        
+    ps.close();
+
+    } catch (SQLException ex) {
+    JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Materia" +ex.getMessage());
+    }
+    return listaMaterias;
+    }
+    
+    
+    public void modificarMateria(Materia materia){
+        
+        String sql="UPDATE materia SET nombre=?, anio=?, estado=?";  
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1, materia.getNombre());
+            ps.setInt(2, materia.getAnio());
+            ps.setBoolean(3, materia.isEstado());
+            
+            int exito=ps.executeUpdate();
+            if(exito==1){
+                JOptionPane.showMessageDialog(null, "Materia modificada con exito");
+            }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+            }
+    
+    }
     
 }
