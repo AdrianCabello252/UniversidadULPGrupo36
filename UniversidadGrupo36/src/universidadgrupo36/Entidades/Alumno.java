@@ -10,24 +10,26 @@ public class Alumno {
     private int dni;
     private String nombre;
     private String apellido;
-    LocalDate fechaNac;
-    boolean estado;
+    private LocalDate fechaNac;
+    private boolean activo; //el boolean tenia que estar dfinido en activo
     
     public Alumno (){}
 
-    public Alumno(int idAlumno, int dni,String nombre, String apellido, LocalDate fechaNac, boolean estado) {
+    public Alumno(int idAlumno, int dni,String nombre, String apellido, LocalDate fechaNac, boolean activo) {
         this.idAlumno = idAlumno;
         this.dni = dni;
         this.apellido = apellido;
+        this.nombre = nombre;
         this.fechaNac = fechaNac;
-        this.estado = estado;
+        this.activo = activo;
     }
 
-    public Alumno(int dni,String nombre, String apellido, LocalDate fechaNac, boolean estado) {
+    public Alumno(int dni,String nombre, String apellido, LocalDate fechaNac, boolean activo) {
         this.dni = dni;
+        this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fechaNac;
-        this.estado = estado;
+        this.activo = activo;
     }
 
     public int getIdAlumno() {
@@ -62,12 +64,12 @@ public class Alumno {
         this.fechaNac = fechaNac;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public boolean isActivo() {
+        return activo;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public String getNombre() {
@@ -82,12 +84,5 @@ public class Alumno {
     public String toString() {
         return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + '}';
     }
-
-//    public boolean isActivo() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-    
-    
-
     
 }
