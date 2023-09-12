@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 import universidadgrupo36.Entidades.Materia;
 
 
-public class MatData {
+public class MateriaData {
     private Connection con=null;
 
-    public MatData() {
+    public MateriaData() {
     con=Conexion.getConexion();
     }
     void guardarMateria(Materia materia){
@@ -50,5 +50,52 @@ public class MatData {
             JOptionPane.showMessageDialog(null, "error al conectar a la base de datos de la materia"+ex.getMessage());
         }
     }
+
+    String getidMateria() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    public Materia buscarMateria(int idMateria) {
+    Materia materia = null;
+    String sql = "SELECT nombre, anio, estado FROM materia WHERE idMateria = ? AND estado = 1";
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setInt(1, idMateria);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            materia = new Materia();
+            materia.setIdMateria(idMateria);
+            materia.setNombre(rs.getString("nombre"));
+            materia.setAnio(rs.getInt("anio"));
+            materia.setEstado(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe la materia");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al buscar la materia: " + ex.getMessage());
+    } finally {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + ex.getMessage());
+        }
+    }
+
+    return materia;
+}
+    
+    
+    
+    
     
 }

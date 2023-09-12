@@ -29,6 +29,7 @@ public class AlumnoData {
              ps.executeUpdate();
              
              ResultSet rs=ps.getGeneratedKeys();
+             
              if(rs.next()){
                  alumno.setIdAlumno(rs.getInt(1)); //se toma la columna nro 1 donde se encuentran los ID
                  JOptionPane.showMessageDialog(null, "Alumno guardado");
@@ -38,16 +39,16 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos");
             }
     }
-    public Alumno buscarAlumnoPorId(int id){
+    public Alumno buscarAlumno(int idAlumno){
         String sql="select dni,apellido,nombre,fechaNac from alumno where idAlumno=? and estado=1";
         Alumno alumno=null;
         try {
              PreparedStatement ps=con.prepareStatement(sql);
-             ps.setInt(1, id);
+             ps.setInt(1, idAlumno);
              ResultSet rs=ps.executeQuery();
              if(rs.next()){
                  alumno=new Alumno();
-                 alumno.setIdAlumno(id);
+                 alumno.setIdAlumno(idAlumno);
                  alumno.setDni(rs.getInt("dni"));
                  alumno.setApellido(rs.getString("apellido"));
                  alumno.setNombre(rs.getString("nombre"));
@@ -143,11 +144,11 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos");
             }
     }
-    public void eliminarAlumno(int id){
+    public void eliminarAlumno(int idAlumno){
         String sql="update alumno SET estado=0 WHERE idAlumno = ? ";
         try {
              PreparedStatement ps=con.prepareStatement(sql);
-             ps.setInt(1, id);
+             ps.setInt(1, idAlumno);
              int exito=ps.executeUpdate();
              if(exito==1){
                 JOptionPane.showMessageDialog(null, "alumno eliminado exitosamente");
