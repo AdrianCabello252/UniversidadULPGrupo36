@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import universidadgrupo36.Entidades.Alumno;
 import universidadgrupo36.Entidades.Inscripcion;
+import universidadgrupo36.Entidades.Materia;
 
 
 public class InscripcionData {
@@ -151,6 +152,62 @@ public class InscripcionData {
         
         return alumnos;
     }
+      
+        public List<Materia> obtenerMateriasCursadas(int idAlumno) {
+        List<Materia> materiasCursadas = new ArrayList<>();
+        Materia mat = null;
+        String sql = "SELECT inscripcion.idMateria, nombre, anno FROM inscripcion JOIN materia "
+                + "ON(inscripcion.idMateria=materia.idMateria) WHERE inscripcion.idAlumno = ?;";
+        try (PreparedStatement stp = con.prepareStatement(sql); ResultSet rs = stp.executeQuery();) {
+            stp.setInt(1, idAlumno);
+            while (rs.next()) {
+                mat.setIdMateria(rs.getInt("idMateria"));
+                mat.setNombre(rs.getString("nombre"));
+                mat.setAnio(rs.getInt("anno"));
+                materiasCursadas.add(mat);
+
+            }
+            
+        stp.close();  
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error SQL contacte administrador" + ex.getMessage(), "Error Conexion base de datos sql", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        } 
+
+        return materiasCursadas;
+        }
+     
+        public List<Materia> obtenerMateriasNOCursadas(int idAlumno) {
+        
+        List<Materia> listaMateriasNOCursadas = new ArrayList<>();
+        Materia mat = null;
+        String sql = "SELECT M.idMateria, M.nombre, M.anno\n"
+                + "FROM Materia M\n"
+                + "WHERE M.idMateria NOT IN (\n"
+                + "    SELECT I.idMateria\n"
+                + "    FROM Inscripcion I\n"
+                + "    WHERE I.idAlumno = ?\n"
+                + ");";
+        try (PreparedStatement stp = con.prepareStatement(sql); ResultSet rs = stp.executeQuery();) {
+            stp.setInt(1, idAlumno);
+            while (rs.next()) {
+                mat.setIdMateria(rs.getInt("idMateria"));
+                mat.setNombre(rs.getString("nombre"));
+                mat.setAnio(rs.getInt("anno"));
+                listaMateriasNOCursadas.add(mat);
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error SQL contacte administrador" + ex.getMessage(), "Error Conexion base de datos sql", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        } finally {
+        //    cerrarConexion(con);
+        }
+
+        return listaMateriasNOCursadas;
+} 
      
      
 }

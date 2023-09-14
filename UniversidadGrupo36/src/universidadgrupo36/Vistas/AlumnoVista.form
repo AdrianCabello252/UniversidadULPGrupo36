@@ -47,10 +47,7 @@
                                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                               <Component id="jtdni" min="-2" pref="115" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jtNombre" min="-2" pref="115" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jtNombre" alignment="1" min="-2" pref="115" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>

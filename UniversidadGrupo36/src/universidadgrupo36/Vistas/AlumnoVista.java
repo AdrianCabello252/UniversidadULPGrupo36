@@ -1,11 +1,17 @@
 
 package universidadgrupo36.Vistas;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import universidadgrupo36.AccesoADatos.AlumnoData;
+import universidadgrupo36.Entidades.Alumno;
 
-public class Alumno extends javax.swing.JInternalFrame {
+
+public class AlumnoVista extends javax.swing.JInternalFrame {
 
  
-    public Alumno() {
+    public AlumnoVista() {
         initComponents();
     }
 
@@ -182,8 +188,21 @@ public class Alumno extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
 
+       int dni = Integer.parseInt(jtdni.getText());
+       
+       AlumnoData aluData = new AlumnoData();
 
-        // TODO add your handling code here:
+       Alumno alu= aluData.buscarAlumnoPorDni(dni);
+       
+       jtApellido.setText(alu.getApellido());
+       jtNombre.setText(alu.getNombre());
+       if (alu.isActivo()) {
+       jcbActivo.setSelected(true);
+       }
+//       jdcFechaNac.setDate(alu.nuevaFecha());
+//       
+       jdcFechaNac.setDate(Date.from(alu.getFechaNac().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

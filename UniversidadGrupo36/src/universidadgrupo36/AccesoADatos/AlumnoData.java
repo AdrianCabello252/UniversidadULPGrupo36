@@ -63,6 +63,7 @@ public class AlumnoData {
             }
         return alumno;
     }
+    
     public Alumno buscarAlumnoPorDni(int dni){
         String sql="select idAlumno, dni,apellido,nombre,fechaNac from alumno where dni=? and estado=1";
         Alumno alumno=null;
@@ -87,6 +88,7 @@ public class AlumnoData {
             }
         return alumno;
     }
+    
     public List<Alumno> listarAlumnos(){  //objeto tipo lista
         String sql="select idAlumno, dni, apellido, nombre, fechaNac from alumno where estado=1";
         ArrayList<Alumno> alumnos= new ArrayList<>(); //lista vacia
@@ -144,6 +146,7 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos");
             }
     }
+    
     public void eliminarAlumno(int idAlumno){
         String sql="update alumno SET estado=0 WHERE idAlumno = ? ";
         try {
