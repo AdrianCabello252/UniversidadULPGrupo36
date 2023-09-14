@@ -5,6 +5,9 @@
  */
 package universidadgrupo36.Vistas;
 
+import java.awt.Dimension;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author marce
@@ -16,6 +19,8 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        escritorio.setSize(1024, 720);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -27,7 +32,7 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMAlumno = new javax.swing.JMenu();
         jMIFormularioalu = new javax.swing.JMenuItem();
@@ -43,20 +48,25 @@ public class NewJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Universidad de la punta");
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
         jMAlumno.setText("Alumno");
 
         jMIFormularioalu.setText("Formulario de Alumnos");
+        jMIFormularioalu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIFormularioaluActionPerformed(evt);
+            }
+        });
         jMAlumno.add(jMIFormularioalu);
 
         jMenuBar1.add(jMAlumno);
@@ -64,6 +74,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jMMateria.setText("Materia");
 
         jMIFormularioMate.setText("Formulario de Materia");
+        jMIFormularioMate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIFormularioMateActionPerformed(evt);
+            }
+        });
         jMMateria.add(jMIFormularioMate);
 
         jMenuBar1.add(jMMateria);
@@ -71,9 +86,19 @@ public class NewJFrame extends javax.swing.JFrame {
         jMAdministracion.setText("Administracion");
 
         jMIManejoIns.setText("Manejo de Inscripciones");
+        jMIManejoIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIManejoInsActionPerformed(evt);
+            }
+        });
         jMAdministracion.add(jMIManejoIns);
 
         jMIManipulaNota.setText("Manipulacion de Notas");
+        jMIManipulaNota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIManipulaNotaActionPerformed(evt);
+            }
+        });
         jMAdministracion.add(jMIManipulaNota);
 
         jMenuBar1.add(jMAdministracion);
@@ -81,6 +106,11 @@ public class NewJFrame extends javax.swing.JFrame {
         JMConsultas.setText("Consultas");
 
         jMIAlumnosMate.setText("Alumnos por Materia");
+        jMIAlumnosMate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAlumnosMateActionPerformed(evt);
+            }
+        });
         JMConsultas.add(jMIAlumnosMate);
 
         jMenuBar1.add(JMConsultas);
@@ -99,11 +129,11 @@ public class NewJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -112,6 +142,78 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
         
     }//GEN-LAST:event_jMSalirActionPerformed
+
+    private void jMIFormularioaluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioaluActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnoVista av=new AlumnoVista();
+         Dimension desktopSize = escritorio.getSize();
+            Dimension frameSize = av.getSize();
+            
+            int x = (desktopSize.width - frameSize.width) / 2;
+            int y = (desktopSize.height - frameSize.height) / 2;
+            av.setLocation(x, y);
+        av.setVisible(true);
+        escritorio.add(av);
+    }//GEN-LAST:event_jMIFormularioaluActionPerformed
+
+    private void jMIFormularioMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioMateActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        Materia m=new Materia();
+         Dimension desktopSize = escritorio.getSize();
+            Dimension frameSize = m.getSize();
+            
+            int x = (desktopSize.width - frameSize.width) / 2;
+            int y = (desktopSize.height - frameSize.height) / 2;
+            m.setLocation(x, y);
+        m.setVisible(true);
+        escritorio.add(m);
+        
+    }//GEN-LAST:event_jMIFormularioMateActionPerformed
+
+    private void jMIManejoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManejoInsActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ManejoInscripcions mi=new ManejoInscripcions();
+         Dimension desktopSize = escritorio.getSize();
+            Dimension frameSize = mi.getSize();
+            
+            int x = (desktopSize.width - frameSize.width) / 2;
+            int y = (desktopSize.height - frameSize.height) / 2;
+            mi.setLocation(x, y);
+        mi.setVisible(true);
+        escritorio.add(mi);
+    }//GEN-LAST:event_jMIManejoInsActionPerformed
+
+    private void jMIManipulaNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIManipulaNotaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ManejoNota mn=new ManejoNota();
+         Dimension desktopSize = escritorio.getSize();
+            Dimension frameSize = mn.getSize();
+            
+            int x = (desktopSize.width - frameSize.width) / 2;
+            int y = (desktopSize.height - frameSize.height) / 2;
+            mn.setLocation(x, y);
+        mn.setVisible(true);
+        escritorio.add(mn);
+    }//GEN-LAST:event_jMIManipulaNotaActionPerformed
+
+    private void jMIAlumnosMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlumnosMateActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnoMateria am=new AlumnoMateria();
+
+         Dimension desktopSize = escritorio.getSize();
+            Dimension frameSize = am.getSize();
+            
+            int x = (desktopSize.width - frameSize.width) / 2;
+            int y = (desktopSize.height - frameSize.height) / 2;
+            am.setLocation(x, y);
+        am.setVisible(true);
+        escritorio.add(am);
+    }//GEN-LAST:event_jMIAlumnosMateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,10 +249,10 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMConsultas;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMAdministracion;
     private javax.swing.JMenu jMAlumno;
     private javax.swing.JMenuItem jMIAlumnosMate;
@@ -162,4 +264,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMSalir;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
+
+
+
 }
