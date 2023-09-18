@@ -160,7 +160,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jMIFormularioMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIFormularioMateActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        Materia m=new Materia();
+        MateriaVista m=new MateriaVista();
          Dimension desktopSize = escritorio.getSize();
             Dimension frameSize = m.getSize();
             
@@ -203,7 +203,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jMIAlumnosMateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlumnosMateActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        AlumnoMateria am=new AlumnoMateria();
+        AlumnosMaterias am=new AlumnosMaterias();
 
          Dimension desktopSize = escritorio.getSize();
             Dimension frameSize = am.getSize();

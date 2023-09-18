@@ -23,7 +23,7 @@ public class MateriaData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
-            ps.setBoolean(3, materia.isEstado());
+            ps.setBoolean(3, materia.isActivo());
             int as=ps.executeUpdate();
             ResultSet rs=ps.getGeneratedKeys();
         if (as==1) {
@@ -133,7 +133,7 @@ public class MateriaData {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
-            ps.setBoolean(3, materia.isEstado());
+            ps.setBoolean(3, materia.isActivo());
             
             int exito=ps.executeUpdate();
             if(exito==1){

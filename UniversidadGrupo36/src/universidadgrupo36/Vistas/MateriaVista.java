@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidadgrupo36.Vistas;
 
 import universidadgrupo36.AccesoADatos.MateriaData;
-
+import universidadgrupo36.Entidades.Materia;
 /**
  *
  * @author FVG
  */
-public class Materia extends javax.swing.JInternalFrame {
+public class MateriaVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Materia
      */
-    public Materia() {
+    public MateriaVista() {
         initComponents();
         setTitle("Materia");
     }
@@ -39,7 +35,7 @@ public class Materia extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jBuscar = new javax.swing.JButton();
         jTcodigo = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
         jTaño = new javax.swing.JTextField();
@@ -78,10 +74,10 @@ public class Materia extends javax.swing.JInternalFrame {
 
         jButton4.setText("Salir");
 
-        jButton5.setText("Buscar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jBuscar.setText("Buscar");
+        jBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jBuscarActionPerformed(evt);
             }
         });
 
@@ -115,7 +111,7 @@ public class Materia extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5)
+                                .addComponent(jBuscar)
                                 .addGap(36, 36, 36))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(46, Short.MAX_VALUE)
@@ -151,7 +147,7 @@ public class Materia extends javax.swing.JInternalFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton5)
+                    .addComponent(jBuscar)
                     .addComponent(jTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -190,15 +186,23 @@ public class Materia extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jTcodigoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+    private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+//       jtApellido.setText(alu.getApellido());
+//       jtNombre.setText(alu.getNombre());
+//       if (alu.isActivo()) {
+//       jcbActivo.setSelected(true);
+//       }
+////     jdcFechaNac.setDate(alu.nuevaFecha());
+//       jdcFechaNac.setDate(Date.from(alu.getFechaNac().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         int codigo=Integer.parseInt(jTcodigo.getText());
         MateriaData matData= new MateriaData();
-        matData.buscarMateria(codigo);
-        if(codigo==1){
-           
+        Materia mat=matData.buscarMateria(codigo);
+        jTnombre.setText(mat.getNombre());
+        jTaño.setText(mat.getAnio());
+        if(mat.isEstado(true)){
+            
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jRButonEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRButonEstadoActionPerformed
         // TODO add your handling code here:
@@ -207,11 +211,11 @@ public class Materia extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBuscar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

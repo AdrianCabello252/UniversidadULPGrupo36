@@ -7,15 +7,15 @@ public class Materia {
     private int idMateria;
     private String nombre;
     private int anio;
-    boolean estado;
+    private boolean activo;
     
     public Materia () {}
 
-    public Materia(int idMateria, String nombre, int anio, boolean estado) {
+    public Materia(int idMateria, String nombre, int anio, boolean activo) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.anio = anio;
-        this.estado = estado;
+        this.activo = activo;
     }
 
     public Materia(String nombre, int anio) {
@@ -47,12 +47,12 @@ public class Materia {
         this.anio = anio;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public boolean isActivo() {
+        return activo;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setEstado(boolean activo) {
+        this.activo = activo;
     }
 
     @Override
