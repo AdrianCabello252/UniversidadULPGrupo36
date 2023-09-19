@@ -17,7 +17,7 @@ public class MateriaData {
     public MateriaData() {
     con=Conexion.getConexion();
     }
-    void guardarMateria(Materia materia){
+    public void guardarMateria(Materia materia){
         try {
             String sql="INSERT INTO materia (nombre,anio,estado) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -36,7 +36,7 @@ public class MateriaData {
         }
     }
     
-    void eliminarMateria(int id){
+    public void eliminarMateria(int id){
         String sql="UPDATE materia SET estado = 0 WHERE idMateria = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
