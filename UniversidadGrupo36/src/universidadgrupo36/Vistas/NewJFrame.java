@@ -60,6 +60,11 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jMAlumno.setText("Alumno");
+        jMAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAlumnoActionPerformed(evt);
+            }
+        });
 
         jMIFormularioalu.setText("Formulario de Alumnos");
         jMIFormularioalu.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +219,10 @@ public class NewJFrame extends javax.swing.JFrame {
         am.setVisible(true);
         escritorio.add(am);
     }//GEN-LAST:event_jMIAlumnosMateActionPerformed
+
+    private void jMAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMAlumnoActionPerformed
 
     /**
      * @param args the command line arguments
