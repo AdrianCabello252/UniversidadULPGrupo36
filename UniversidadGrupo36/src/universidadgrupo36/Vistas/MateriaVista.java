@@ -161,7 +161,7 @@ public class MateriaVista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jRButonEstado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
@@ -187,20 +187,13 @@ public class MateriaVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTcodigoActionPerformed
 
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
-//       jtApellido.setText(alu.getApellido());
-//       jtNombre.setText(alu.getNombre());
-//       if (alu.isActivo()) {
-//       jcbActivo.setSelected(true);
-//       }
-////     jdcFechaNac.setDate(alu.nuevaFecha());
-//       jdcFechaNac.setDate(Date.from(alu.getFechaNac().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         int codigo=Integer.parseInt(jTcodigo.getText());
         MateriaData matData= new MateriaData();
         Materia mat=matData.buscarMateria(codigo);
         jTnombre.setText(mat.getNombre());
-        jTaño.setText(mat.getAnio());
-        if(mat.isEstado(true)){
-            
+        jTaño.setText(String.valueOf(mat.getAnio()));
+        if(mat.isActivo()){
+            jRButonEstadoActionPerformed(evt);
         }
     }//GEN-LAST:event_jBuscarActionPerformed
 
