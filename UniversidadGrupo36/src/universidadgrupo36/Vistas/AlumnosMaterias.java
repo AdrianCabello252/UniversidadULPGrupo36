@@ -15,16 +15,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AlumnosMaterias extends javax.swing.JInternalFrame {
     
-
-    public AlumnosMaterias() {
-        initComponents();
-        armarCabecera();
-    }
-    
     MateriaData matData = new MateriaData();
     List<Materia> listaMaterias = matData.ListarMaterias();
     DefaultComboBoxModel<Materia> model = new DefaultComboBoxModel<>(listaMaterias.toArray(new Materia[0]));
+    DefaultTableModel m;
+
+
+    public AlumnosMaterias() {
+        initComponents();
+        m = new DefaultTableModel(); 
+        jtAlumnos.setModel(m); 
+        armarCabecera();
+        
+    }
     
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -135,7 +140,6 @@ public class AlumnosMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JTable jtAlumnos;
     // End of variables declaration//GEN-END:variables
 
-  DefaultTableModel m = (DefaultTableModel) jtAlumnos.getModel();
 
     private void armarCabecera(){
         m.addColumn("ID");
