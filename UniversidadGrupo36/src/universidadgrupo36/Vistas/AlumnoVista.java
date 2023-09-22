@@ -227,10 +227,26 @@ public class AlumnoVista extends javax.swing.JInternalFrame {
     
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
     
+//        int dni = Integer.parseInt(jtdni.getText());    
+//        AlumnoData aluData = new AlumnoData();
+//        Alumno alu= aluData.buscarAlumnoPorDni(dni);
+//    
+//        alu.setApellido(jtApellido.getText());
+//        alu.setNombre(jtNombre.getText());
+//        alu.setActivo(jcbActivo.isSelected());
+//        alu.setFechaNac(jdcFechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+//        aluData.guardarAlumno(alu);
+
         int dni = Integer.parseInt(jtdni.getText());    
         AlumnoData aluData = new AlumnoData();
-        Alumno alu= aluData.buscarAlumnoPorDni(dni);
-    
+        Alumno alu = aluData.buscarAlumnoPorDni(dni);
+
+        if (alu == null) {
+            // El alumno no existe en la base de datos, así que creamos un nuevo objeto Alumno
+            alu = new Alumno();
+            alu.setDni(dni);
+        }
+
         alu.setApellido(jtApellido.getText());
         alu.setNombre(jtNombre.getText());
         alu.setActivo(jcbActivo.isSelected());
@@ -246,11 +262,16 @@ public class AlumnoVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+//        jtApellido.setText("");
+//        jtNombre.setText("");
+//        jtdni.setText("");
+//        //jdcFechaNac.setCalendar("");
+//        jcbActivo.setDisabledSelectedIcon(frameIcon);
         jtApellido.setText("");
         jtNombre.setText("");
         jtdni.setText("");
-        //jdcFechaNac.setCalendar("");
-        jcbActivo.setDisabledSelectedIcon(frameIcon);
+        jdcFechaNac.setCalendar(null);
+        jcbActivo.setSelected(false);
     }//GEN-LAST:event_jbNuevoActionPerformed
                                                        
 

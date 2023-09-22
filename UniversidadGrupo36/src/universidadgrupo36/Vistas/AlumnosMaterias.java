@@ -16,8 +16,8 @@ import javax.swing.table.DefaultTableModel;
 public class AlumnosMaterias extends javax.swing.JInternalFrame {
     
     MateriaData matData = new MateriaData();
-    List<Materia> listaMaterias = matData.ListarMaterias();
-    DefaultComboBoxModel<Materia> model = new DefaultComboBoxModel<>(listaMaterias.toArray(new Materia[0]));
+//    List<Materia> listaMaterias = matData.ListarMaterias();
+//    DefaultComboBoxModel<Materia> model = new DefaultComboBoxModel<>(listaMaterias.toArray(new Materia[0]));
     DefaultTableModel m;
 
 
@@ -26,7 +26,15 @@ public class AlumnosMaterias extends javax.swing.JInternalFrame {
         m = new DefaultTableModel(); 
         jtAlumnos.setModel(m); 
         armarCabecera();
-        
+        cargarMaterias();
+    }
+    
+    private void cargarMaterias() {
+        MateriaData materiaData = new MateriaData();
+        List<Materia> listaMaterias = materiaData.ListarMaterias();
+
+        DefaultComboBoxModel<Materia> model = new DefaultComboBoxModel<>(listaMaterias.toArray(new Materia[0]));
+        jcMaterias.setModel(model);
     }
     
   
@@ -82,20 +90,18 @@ public class AlumnosMaterias extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jcMaterias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbSalir)))
