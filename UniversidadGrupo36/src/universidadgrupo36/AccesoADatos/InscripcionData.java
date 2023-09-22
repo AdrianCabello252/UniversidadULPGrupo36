@@ -125,14 +125,16 @@ public class InscripcionData {
      }
      
      
-      public List<Alumno> obtenerAlumnosXMateria(int idMateria){  
-        String sql="select idAlumno, dni, apellido, nombre, fechaNac from alumno where idMateria=?";
+    public List<Alumno> obtenerAlumnosXMateria(int idMateria){  
+//        String sql="select idAlumno, dni, apellido, nombre, fechaNacimiento from alumno where idMateria=?";
+        String sql= "SELECT alumno.idAlumno, alumno.dni, alumno.apellido, alumno.nombre, alumno.fechaNacimiento FROM alumno JOIN inscripcion ON alumno.idAlumno = inscripcion.idAlumno WHERE inscripcion.idMateria = ?";
         
         ArrayList<Alumno> alumnos= new ArrayList<>(); 
         
         try {
-        PreparedStatement ps=con.prepareStatement (sql);
-        ResultSet rs=ps.executeQuery();
+          PreparedStatement ps = con.prepareStatement(sql);
+          ps.setInt(1, idMateria); //idMateria agregado como parametro
+          ResultSet rs = ps.executeQuery();
         
         while(rs.next()){
                 Alumno alumno=new Alumno(); 
@@ -140,7 +142,7 @@ public class InscripcionData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
                 alumnos.add(alumno); 
             }

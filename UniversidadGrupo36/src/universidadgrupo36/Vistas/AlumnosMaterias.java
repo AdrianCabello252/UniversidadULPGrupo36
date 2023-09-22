@@ -49,6 +49,8 @@ public class AlumnosMaterias extends javax.swing.JInternalFrame {
         jtAlumnos = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
 
+        setMaximizable(true);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Listado de Alumnos por Materia");
@@ -163,10 +165,10 @@ public class AlumnosMaterias extends javax.swing.JInternalFrame {
     List<Alumno> alumnos = inscData.obtenerAlumnosXMateria(materiaSeleccionada.getIdMateria());
     m.setRowCount(0);
 
-    for (Alumno alumno : alumnos) {
-        m.addRow(new Object[]{alumno.getIdAlumno(), alumno.getDni(), alumno.getApellido(), alumno.getNombre(), alumno.getFechaNac()});
+        for (Alumno alumno : alumnos) {
+            m.addRow(new Object[]{alumno.getIdAlumno(), alumno.getDni(), alumno.getApellido(), alumno.getNombre(), alumno.getFechaNac()});
+        }
     }
-}
     
     
 }
