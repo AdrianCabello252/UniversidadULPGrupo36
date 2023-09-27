@@ -242,7 +242,6 @@ public class AlumnoVista extends javax.swing.JInternalFrame {
         Alumno alu = aluData.buscarAlumnoPorDni(dni);
 
         if (alu == null) {
-            // El alumno no existe en la base de datos, así que creamos un nuevo objeto Alumno
             alu = new Alumno();
             alu.setDni(dni);
         }

@@ -31,7 +31,7 @@ public class AlumnosMaterias extends javax.swing.JInternalFrame {
     
     private void cargarMaterias() {
         MateriaData materiaData = new MateriaData();
-        List<Materia> listaMaterias = materiaData.ListarMaterias();
+        List<Materia> listaMaterias = matData.ListarMaterias();
 
         DefaultComboBoxModel<Materia> model = new DefaultComboBoxModel<>(listaMaterias.toArray(new Materia[0]));
         jcMaterias.setModel(model);
@@ -169,6 +169,5 @@ public class AlumnosMaterias extends javax.swing.JInternalFrame {
             m.addRow(new Object[]{alumno.getIdAlumno(), alumno.getDni(), alumno.getApellido(), alumno.getNombre(), alumno.getFechaNac()});
         }
     }
-    
     
 }

@@ -80,9 +80,15 @@ public class Alumno {
         this.nombre = nombre;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + '}';
+//    }
+    
+    
     @Override
     public String toString() {
-        return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + '}';
+    return dni+", "+apellido+", "+nombre;
     }
     
 }

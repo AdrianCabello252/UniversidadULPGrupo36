@@ -18,7 +18,7 @@ public class AlumnoData {
     }
     public void guardarAlumno(Alumno alumno){
         String sql="INSERT INTO alumno(dni,apellido,nombre,fechaNacimiento,estado)"
-                + "VALUES(?,?,?,?,?)";
+                + " VALUES(?,?,?,?,?) ";
         try {
              PreparedStatement ps=con.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
              ps.setInt(1, alumno.getDni());

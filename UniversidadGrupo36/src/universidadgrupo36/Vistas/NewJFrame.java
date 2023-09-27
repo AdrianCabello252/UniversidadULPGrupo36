@@ -181,6 +181,7 @@ public class NewJFrame extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         ManejoInscripcions mi=new ManejoInscripcions();
+//         Inscripciones mi = new Inscripciones();
          Dimension desktopSize = escritorio.getSize();
             Dimension frameSize = mi.getSize();
             
